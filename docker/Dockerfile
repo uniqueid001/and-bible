@@ -52,6 +52,10 @@ RUN useradd --home-dir $HOME --create-home \
 
 WORKDIR $HOME
 
+# Install kotlin-vim package
+ENV KOTLIN_VIM_DEST /var/lib/vim/addons/pack/local/start
+RUN mkdir -p ${KOTLIN_VIM_DEST}
+RUN git clone https://github.com/udalov/kotlin-vim.git ${KOTLIN_VIM_DEST}/kotlin-vim
 
 ## ------------------------------------------------------------------------
 # Set up access via ssh for X-forwarding on hosts which need this

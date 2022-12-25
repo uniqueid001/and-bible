@@ -249,7 +249,12 @@ android {
     }
 
     buildFeatures {
+        compose = true
         viewBinding = true
+    }
+    composeOptions {
+        // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+        kotlinCompilerExtensionVersion = "1.3.2"
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -288,12 +293,29 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     implementation("androidx.preference:preference:1.2.0")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.webkit:webkit:1.5.0")
 
     //implementation("androidx.recyclerview:recyclerview-selection:1.0.0")
+
+    val composeBom = platform("androidx.compose:compose-bom:2022.11.00")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-viewbinding")
+    implementation("androidx.compose.material:material")
+    implementation("com.google.accompanist:accompanist-themeadapter-appcompat:0.28.0")
+    implementation("androidx.activity:activity-compose:1.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    // Android Studio Preview support
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    // Tests of Compose-based UI
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     //implementation("com.jaredrummler:colorpicker:1.1.0")
     implementation("com.github.AndBible:ColorPicker:ab-fix-1")

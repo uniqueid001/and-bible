@@ -24,7 +24,9 @@ import org.crosswire.jsword.book.BookFilter
 import org.crosswire.jsword.book.sword.SwordBook
 import org.crosswire.jsword.book.sword.SwordBookMetaData
 
-abstract class RepoBase {
+abstract class RepoBase(
+    val organization: String,
+    ) {
     lateinit var repoFactory: RepoFactory
 
     private val downloadManager get() = repoFactory.downloadManager
@@ -53,7 +55,7 @@ abstract class RepoBase {
     }
 }
 
-class AndBibleRepo : RepoBase() {
+class AndBibleRepo : RepoBase("AndBible Project") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val bookList = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(bookList)
@@ -68,7 +70,7 @@ class AndBibleRepo : RepoBase() {
     }
 }
 
-class StepRepo : RepoBase() {
+class StepRepo : RepoBase("STEPBible") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val bookList = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(bookList)
@@ -83,7 +85,7 @@ class StepRepo : RepoBase() {
     }
 }
 
-class AndBibleExtraRepo : RepoBase() {
+class AndBibleExtraRepo : RepoBase("AndBible Project") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val bookList = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(bookList)
@@ -98,7 +100,7 @@ class AndBibleExtraRepo : RepoBase() {
     }
 }
 
-class AndBibleBetaRepo : RepoBase() {
+class AndBibleBetaRepo : RepoBase("AndBible Project") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val books: List<Book> = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(books)
@@ -119,7 +121,7 @@ class AndBibleBetaRepo : RepoBase() {
 }
 
 
-class CrosswireBetaRepo : RepoBase() {
+class CrosswireBetaRepo : RepoBase("Crosswire Bible Society") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val books: List<Book> = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(books)
@@ -146,7 +148,7 @@ class CrosswireBetaRepo : RepoBase() {
     }
 }
 
-class CrosswireRepo : RepoBase() {
+class CrosswireRepo : RepoBase("Crosswire Bible Society") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val books = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(books)
@@ -162,7 +164,7 @@ class CrosswireRepo : RepoBase() {
     }
 }
 
-class LockmanRepo : RepoBase() {
+class LockmanRepo : RepoBase("CrossWire Bible Society") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val books = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(books)
@@ -177,7 +179,7 @@ class LockmanRepo : RepoBase() {
     }
 }
 
-class WycliffeRepo : RepoBase() {
+class WycliffeRepo : RepoBase("CrossWire Bible Society") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val books = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(books)
@@ -192,7 +194,7 @@ class WycliffeRepo : RepoBase() {
     }
 }
 
-class EBibleRepo : RepoBase() {
+class EBibleRepo : RepoBase("eBible.org") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val bookList = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(bookList)
@@ -208,7 +210,7 @@ class EBibleRepo : RepoBase() {
     }
 }
 
-class IBTRepo : RepoBase() {
+class IBTRepo : RepoBase("IBT (Institute for Bible Translation)") {
     override fun getRepoBooks(refresh: Boolean): List<Book> {
         val books = getBookList(SUPPORTED_DOCUMENTS, refresh)
         storeRepoNameInMetaData(books)

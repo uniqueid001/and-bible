@@ -465,6 +465,10 @@ open class DownloadActivity : DocumentSelectionBase(R.menu.download_documents, R
 
                 isHandled  = true
             }
+
+            R.id.manage_repositories -> {
+                startActivity( Intent(this, ModuleRepositoriesActivity::class.java) )
+            }
         }
         if (!isHandled) {
             isHandled = super.onOptionsItemSelected(item)

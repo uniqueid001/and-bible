@@ -305,6 +305,8 @@
 
     <string name="manage_repositories">Manage Repositories</string>
     <string name="module_repositories">Module Repositories</string>
+    <string name="repository_location_heading">Location</string>
+    <string name="repository_organization_heading">Organization</string>
 
     <!--  Install zip file -->
     <string name="install_zip">Load Document From Zip</string>

@@ -26,8 +26,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.bible.android.activity.R
 import net.bible.android.view.util.UiUtils.actionbarBackgroundColor
 import net.bible.service.download.DownloadManager
 import net.bible.service.download.RepoFactory
@@ -125,9 +127,9 @@ private fun ModuleRepository(
         ) {
         fun Modifier.indent(level: Int) = padding(start = 24.dp * level)
         Text(repository.name, style = MaterialTheme.typography.h5)
-        Text("Location", style = MaterialTheme.typography.h6, modifier = Modifier.indent(1))
+        Text(stringResource(R.string.repository_location_heading), style = MaterialTheme.typography.h6, modifier = Modifier.indent(1))
         Text(repository.uri, style = MaterialTheme.typography.body1, modifier = Modifier.indent(2))
-        Text("Organization", style = MaterialTheme.typography.h6, modifier = Modifier.indent(1))
+        Text(stringResource(R.string.repository_organization_heading), style = MaterialTheme.typography.h6, modifier = Modifier.indent(1))
         Text(repository.organization, style = MaterialTheme.typography.body1, modifier = Modifier.indent(2))
         }
     }

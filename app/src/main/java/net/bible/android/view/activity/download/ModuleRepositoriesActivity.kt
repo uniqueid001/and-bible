@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -107,7 +109,6 @@ private fun ModuleRepositoriesList(
     LazyColumn(modifier = modifier) {
         items(moduleRepositories, key = { it.name }) {
             ModuleRepository(it)
-            Divider()
             }
         }
     }
@@ -117,20 +118,25 @@ private fun ModuleRepository(
     repository: RepoInfo,
     modifier: Modifier = Modifier,
     ) {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.Start,
+    Card(
+        shape = RoundedCornerShape(13.dp),
+        elevation = 4.dp,
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            ,
+            .padding(horizontal = 6.dp, vertical = 4.dp),
         ) {
-        fun Modifier.indent(level: Int) = padding(start = 24.dp * level)
-        Text(repository.name, style = MaterialTheme.typography.h5)
-        Text(stringResource(R.string.repository_location_heading), style = MaterialTheme.typography.h6, modifier = Modifier.indent(1))
-        Text(repository.uri, style = MaterialTheme.typography.body1, modifier = Modifier.indent(2))
-        Text(stringResource(R.string.repository_organization_heading), style = MaterialTheme.typography.h6, modifier = Modifier.indent(1))
-        Text(repository.organization, style = MaterialTheme.typography.body1, modifier = Modifier.indent(2))
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.Start,
+            modifier = modifier.padding(horizontal = 10.dp, vertical = 5.dp),
+            ) {
+            fun Modifier.indent(level: Int) = padding(start = 24.dp * level)
+            Text(repository.name, style = MaterialTheme.typography.h5)
+            Text(stringResource(R.string.repository_location_heading), style = MaterialTheme.typography.h6, modifier = Modifier.indent(1))
+            Text(repository.uri, style = MaterialTheme.typography.body1, modifier = Modifier.indent(2))
+            Text(stringResource(R.string.repository_organization_heading), style = MaterialTheme.typography.h6, modifier = Modifier.indent(1))
+            Text(repository.organization, style = MaterialTheme.typography.body1, modifier = Modifier.indent(2))
+            }
         }
     }
 
